@@ -1,7 +1,6 @@
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer');
 const puppeteerCore = require('puppeteer-core');
-const pptr = puppeteer || puppeteerCore;
 
 const isBrowserAvailable = async browser => {
   try {
@@ -23,8 +22,8 @@ exports.getBrowser = (() => {
     // eslint-disable-next-line no-return-assign
     launching = new Promise(r => (unlock = r));
     if (!browser || !(await isBrowserAvailable(browser))) {
-      if (puppeteer) {
-        browser = await pptr.launch({
+      if (process.env.NODE_ENV === 'development' && puppeteer) {
+        browser = await puppeteer.launch({
           args: [
             '--no-sandbox',
             '--headless',
@@ -36,8 +35,8 @@ exports.getBrowser = (() => {
         });
       }
 
-      if (!puppeteer && puppeteerCore) {
-        browser = await pptr.launch({
+      if (process.env.NODE_ENV === 'production' && puppeteerCore) {
+        browser = await puppeteerCore.launch({
           args: chrome.args,
           executablePath: await chrome.executablePath,
           headless: chrome.headless
