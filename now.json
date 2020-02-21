@@ -1,6 +1,11 @@
 {
   "version": 2,
-  "routes": [
-      { "src": "/(.*)", "dest": "/api/index.js" }
+  "routes": [{ "src": "/(.*)", "dest": "/api/index.js" }],
+  "builds": [
+    {
+      "src": "setup.js",
+      "use": "@now/node",
+      "config": { "maxLambdaSize": "40mb" }
+    }
   ]
 }

@@ -1,4 +1,4 @@
-const { getBrowser } = require('../utils/setup.js')
+const { getBrowser } = require('../setup.js')
 
 module.exports = async function pageshot (req, res) {
   const { query = {} } = req;

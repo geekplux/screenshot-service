@@ -5,11 +5,8 @@
   "description": "Screenshot as a service.",
   "author": "GeekPlux <geekplux@gmail.com>",
   "license": "private",
-  "main": "src/index.js",
   "scripts": {
-    "deploy": "now --public -T screenshot-service",
-    "alias": "now -T screenshot-service alias",
-    "dev": "node src/index.js"
+    "dev": "node dev/index.js"
   },
   "dependencies": {
     "chrome-aws-lambda": "^2.1.1",
