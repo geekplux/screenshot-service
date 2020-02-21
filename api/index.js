@@ -23,7 +23,7 @@ module.exports = async function pageshot (req, res) {
     await page.setViewport(viewport)
     await page.goto(url, {timeout: 10000})
     const screenshot = await page.screenshot({fullPage})
-    res.type('png');
+    res.set('Content-Type', 'image/png')
     res.send(screenshot);
     page.close()
   } catch (e) {
