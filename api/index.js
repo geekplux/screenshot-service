@@ -23,8 +23,9 @@ module.exports = async function pageshot (req, res) {
     await page.setViewport(viewport)
     await page.goto(url, {timeout: 10000})
     const screenshot = await page.screenshot({fullPage})
-    res.set('Content-Type', 'image/png')
-    res.send(screenshot);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', `image/png`);
+    res.end(screenshot);
     page.close()
   } catch (e) {
     res.body = 'PAGESHOT FAILED: ' + e.message
