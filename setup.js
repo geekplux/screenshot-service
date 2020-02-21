@@ -1,6 +1,7 @@
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer');
 const puppeteerCore = require('puppeteer-core');
+const fonts = require('./fonts');
 
 const isBrowserAvailable = async browser => {
   try {
@@ -36,6 +37,7 @@ exports.getBrowser = (() => {
       }
 
       if (process.env.NODE_ENV === 'production' && puppeteerCore) {
+        await Promise.all(fonts.map(font => await chrome.font(font)));
         browser = await puppeteerCore.launch({
           args: chrome.args,
           executablePath: await chrome.executablePath,
