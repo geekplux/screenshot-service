@@ -1,13 +1,13 @@
 {
-  "name": "pageshot",
+  "name": "screenshot-service",
   "version": "1.0.0",
-  "description": "Pageshot as a service.",
-  "author": "Amio <amio.cn@gmail.com>",
+  "description": "Screenshot as a service.",
+  "author": "GeekPlux <geekplux@gmail.com>",
   "license": "ISC",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "now --public -T pageshot",
-    "alias": "now -T pageshot alias",
+    "deploy": "now --public -T screenshot-service",
+    "alias": "now -T screenshot-service alias",
     "start": "node ."
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "koa-static": "^5.0.0",
     "micro": "^9.3.3",
     "micro-fork": "^0.1.0",
-    "puppeteer": "^1.0.0",
+    "puppeteer": "^2.0.0",
     "serve-handler": "^4.0.1"
   }
 }

@@ -1,10 +1,9 @@
 {
-  "name": "pageshot",
+  "name": "screenshot-service",
   "type": "docker",
   "public": true,
   "alias": [
-    "shot",
-    "pageshot"
+    "screenshot"
   ],
   "features": {
     "cloud": "v2"
