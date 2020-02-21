@@ -37,7 +37,7 @@ exports.getBrowser = (() => {
       }
 
       if (process.env.NODE_ENV === 'production' && puppeteerCore) {
-        await Promise.all(fonts.map(font => await chrome.font(font)));
+        await Promise.all(fonts.map(async font => { await chrome.font(font) }));
         browser = await puppeteerCore.launch({
           args: chrome.args,
           executablePath: await chrome.executablePath,
