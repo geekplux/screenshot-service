@@ -1,15 +1,6 @@
 {
-  "name": "screenshot-service",
-  "type": "docker",
-  "public": true,
-  "alias": [
-    "screenshot"
-  ],
-  "features": {
-    "cloud": "v2"
-  },
-  "limits": {
-    "maxConcurrentReqs": 4,
-    "timeout": 900000
-  }
+  "version": 2,
+  "routes": [
+      { "src": "/(.*)", "dest": "/api/index.js" }
+  ]
 }

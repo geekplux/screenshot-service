@@ -1,13 +1,12 @@
-const assert = require('assert')
-const { getBrowser } = require('./setup.js')
+const { getBrowser } = require('../utils/setup.js')
 
-module.exports = async function pageshot (ctx) {
-  const { response } = ctx
-  const { url, height, width, dpr, full } = ctx.query
+module.exports = async function pageshot (req, res) {
+  const { query = {} } = req;
+  const { url, height, width, dpr, full } = query
 
   if (typeof url !== 'string') {
-    response.code = 400
-    response.body = 'URL is required.'
+    res.code = 400
+    res.body = 'URL is required.'
     return
   }
 
@@ -23,12 +22,13 @@ module.exports = async function pageshot (ctx) {
     const page = await (await getBrowser()).newPage()
     await page.setViewport(viewport)
     await page.goto(url, {timeout: 10000})
-    response.body = await page.screenshot({fullPage})
-    response.type = 'image/png'
+    const screenshot = await page.screenshot({fullPage})
+    res.type('png');
+    res.send(screenshot);
     page.close()
   } catch (e) {
-    response.body = 'PAGESHOT FAILED: ' + e.message
-    response.code = 400
+    res.body = 'PAGESHOT FAILED: ' + e.message
+    res.code = 400
     console.error('SHOT_ERROR', e.message)
   }
   console.timeEnd(url)

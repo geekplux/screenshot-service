@@ -1,16 +1,6 @@
-# pageshot [![][now-deploy-src]](#deploy)
-
-Pageshot as a service.
+Screenshot as a service.
 
 ## Usage
-
-- __Web UI__: https://shot.now.sh
-- __Endpoint__: https://shot.now.sh/shot
-
-Examples:
-
-- https://shot.now.sh/shot?url=https://google.com
-- https://shot.now.sh/shot?url=https://github.com&full=true
 
 Query Params:
 
@@ -20,23 +10,6 @@ Query Params:
 - __`full`__: Full page screenshot. (default: false)
 - __`dpr`__: Device pixel ratio. (default: 2)
 
-## Deploy
-
-- to [now.sh](https://zeit.co/now):
-```
-now amio/pageshot
-```
-
-- using [Dockerfile](Dockerfile):
-```
-docker pull amio/pageshot
-```
-
-- running locally (require Google Chrome installed):
-```
-npm start
-```
-
 ## License
 
-ISC © [GeekPlux](https://github.com/geekplux)
+Private © [GeekPlux](https://github.com/geekplux)

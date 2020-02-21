@@ -1,28 +1,20 @@
-const Koa = require('koa')
-const serve = require('koa-static')
-const router = require('koa-route')
-const pageshot = require('./pageshot.js')
+const express = require('express');
+const api = require('../api/index.js');
+const app = express();
+const port = 3000;
 
-module.exports = async function (port = 3000) {
-  const app = new Koa()
+app.use(express.static(__dirname + '/public'));
+app.use('/api', api);
 
-  app.use(router.get('/shot', pageshot))
-  app.use(serve('public'))
+app.listen(port, () => {
+  console.log(`Pageshot server running on http://localhost:${port}`);
+});
 
-  app.listen(port, () => {
-    console.log(`Pageshot server running on ${port}`)
-  })
-
-  app.on('error', err => {
-    console.error('ERR_APP:', err)
-  })
-
-  return app
-}
-
-module.exports()
+app.on('error', err => {
+  console.error('ERR_APP:', err);
+});
 
 process.on('uncaughtException', err => {
-  console.error(`UncaughtException: ${err}`)
-  process.exit(1)
-})
+  console.error(`UncaughtException: ${err}`);
+  process.exit(1);
+});

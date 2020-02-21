@@ -1,23 +1,22 @@
 {
   "name": "screenshot-service",
+  "private": true,
   "version": "1.0.0",
   "description": "Screenshot as a service.",
   "author": "GeekPlux <geekplux@gmail.com>",
-  "license": "ISC",
+  "license": "private",
   "main": "src/index.js",
   "scripts": {
     "deploy": "now --public -T screenshot-service",
     "alias": "now -T screenshot-service alias",
-    "start": "node ."
+    "dev": "node src/index.js"
   },
   "dependencies": {
-    "koa": "^2.5.2",
-    "koa-proxies": "^0.7.0",
-    "koa-route": "^3.2.0",
-    "koa-static": "^5.0.0",
-    "micro": "^9.3.3",
-    "micro-fork": "^0.1.0",
-    "puppeteer": "^2.0.0",
-    "serve-handler": "^4.0.1"
+    "chrome-aws-lambda": "^2.1.1",
+    "express": "^4.17.1",
+    "puppeteer-core": "^2.1.1"
+  },
+  "devDependencies": {
+    "puppeteer": "^2.1.1"
   }
 }
