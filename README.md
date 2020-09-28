@@ -1,4 +1,6 @@
-Screenshot as a service.
+> # Work In Progress
+
+Screenshot as a service. *Using by myself temporarily*.
 
 ## Usage
 
